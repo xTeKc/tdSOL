@@ -5,6 +5,10 @@ require('chai')
 	.should()
 
 contract('Token', (accounts) => {
+	const name = 'Digital Gold'
+	const symbol = 'DGLD'
+	const decimals = 18
+	const totalSupply = 1000000
 	let token
 
 	beforeEach(async () => {
@@ -14,22 +18,22 @@ contract('Token', (accounts) => {
 	describe('deployment', () => {
 		it('tracks the name', async () => {
 			const result = await token.name()
-			result.should.equal('Digital Gold')
+			result.should.equal(name)
 		})
 
 		it('tracks the symbol', async () => {
 			const result = await token.symbol()
-			result.should.equal('DGLD')
+			result.should.equal(symbol)
 		})
 
 		it('tracks the decimals', async () => {
 			const result = await token.decimals()
-			result.should.equal('decimals')			
+			result.should.equal(decimals)			
 		})
 
 		it('tracks the total supply', async () => {
 			const result = await token.totalSupply()
-			result.should.equal('total supply')			
+			result.should.equal(totalSupply)			
 		})
 
 
