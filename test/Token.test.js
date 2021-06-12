@@ -10,7 +10,7 @@ contract('Token', ([deployer]) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
 	const decimals = '18'
-	const totalSupply = '1000000000000000000000000'
+	const totalSupply = tokens(1000000).toString()
 	let token
 
 	beforeEach(async () => {
@@ -35,12 +35,12 @@ contract('Token', ([deployer]) => {
 
 		it('tracks the total supply', async () => {
 			const result = await token.totalSupply()
-			result.toString().should.equal(totalSupply)			
+			result.toString().should.equal(totalSupply.toString())			
 		})
 
 		it('assigns the total supply to the deployer', async () => {
 			const result = await token.balanceOf(deployer)
-			result.toString().should.equal(tokens(totalSupply))
+			result.toString().should.equal(totalSupply.toString())
 		})
 
 
