@@ -13,8 +13,10 @@ mapping (address => uint256) public balanceOf;
 
 //Send tokens
 
+
 constructor() public {
 	totalSupply = 1000000 * (10 ** decimals);
+	balanceOf[msg.sender] = totalSupply;
 }
 
 }
