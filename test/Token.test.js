@@ -8,7 +8,7 @@ contract('Token', (accounts) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
 	const decimals = 18
-	const totalSupply = 1000000
+	const totalSupply = ''
 	let token
 
 	beforeEach(async () => {
