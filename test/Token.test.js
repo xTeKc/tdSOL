@@ -4,7 +4,8 @@ contract('Token', (accounts) => {
 
 	descrbibe('deployment', () => {
 		it('tracks the name', async () => {
-			token = await Token.new()
+			const token = await Token.new()
+			const result = token.name()
 			//Read token name here.. 
 			//Check the token name is 'Digital Gold'
 		})
