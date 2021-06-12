@@ -2,9 +2,9 @@
   "name": "tdsol",
   "version": "0.1.0",
   "private": true,
-  //"homepage": ".",
-  //"engines": {
-  //  "node": "8.11.1"
+  "homepage": ".",
+  "engines": {
+    "node": "8.11.1"
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "1.1.0",
