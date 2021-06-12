@@ -8,7 +8,7 @@ contract('Token', (accounts) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
 	const decimals = 18
-	const totalSupply = ''
+	const totalSupply = '1000000000000000000000000'
 	let token
 
 	beforeEach(async () => {
@@ -33,7 +33,7 @@ contract('Token', (accounts) => {
 
 		it('tracks the total supply', async () => {
 			const result = await token.totalSupply()
-			result.should.equal(totalSupply)			
+			result.toString.should.equal(totalSupply)			
 		})
 
 
