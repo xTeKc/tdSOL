@@ -12,6 +12,20 @@ contract('Token', (accounts) => {
 			const result = await token.name()
 			result.should.equal('Digital Gold')
 		})
+
+		it('tracks the symbol', async () => {
+
+		})
+
+		it('tracks the decimals', async () => {
+			
+		})
+
+		it('tracks the total supply', async () => {
+			
+		})
+
+
 	})
 
 })
