@@ -4,7 +4,7 @@ require('chai')
 	.use(require('chai-as-promised'))
 	.should()
 
-contract('Token', (accounts) => {
+contract('Token', ([deployer]) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
 	const decimals = '18'
@@ -37,7 +37,7 @@ contract('Token', (accounts) => {
 		})
 
 		it('assigns the total supply to the deployer', async () => {
-			const result = await token.balanceOf(accounts[0])
+			const result = await token.balanceOf(deployer)
 			result.toString().should.equal(tokens(totalSupply))
 		})
 
