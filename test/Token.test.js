@@ -5,6 +5,7 @@ require('chai')
 	.should()
 
 contract('Token', (accounts) => {
+	let token
 
 	beforeEach(async () => {
 		token = await Token.new()
