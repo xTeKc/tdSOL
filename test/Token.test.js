@@ -1,3 +1,5 @@
+import { tokens } from './helpers'
+
 const Token = artifacts.require('./Token')
 
 require('chai')
