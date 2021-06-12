@@ -18,15 +18,18 @@ contract('Token', (accounts) => {
 		})
 
 		it('tracks the symbol', async () => {
-
+			const result = await token.symbol()
+			result.should.equal('DGLD')
 		})
 
 		it('tracks the decimals', async () => {
-			
+			const result = await token.decimals()
+			result.should.equal('decimals')			
 		})
 
 		it('tracks the total supply', async () => {
-			
+			const result = await token.totalSupply()
+			result.should.equal('total supply')			
 		})
 
 
