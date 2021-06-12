@@ -6,10 +6,10 @@ require('chai')
 
 contract('Token', (accounts) => {
 
-	descrbibe('deployment', () => {
+	describe('deployment', () => {
 		it('tracks the name', async () => {
 			const token = await Token.new()
-			const result = token.name()
+			const result = await token.name()
 			result.should.equal('Digital Gold')
 		})
 	})
