@@ -7,7 +7,7 @@ require('chai')
 contract('Token', (accounts) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
-	const decimals = 18
+	const decimals = '18'
 	const totalSupply = '1000000000000000000000000'
 	let token
 
@@ -28,12 +28,12 @@ contract('Token', (accounts) => {
 
 		it('tracks the decimals', async () => {
 			const result = await token.decimals()
-			result.should.equal(decimals)			
+			result.toString().should.equal(decimals)			
 		})
 
 		it('tracks the total supply', async () => {
 			const result = await token.totalSupply()
-			result.toString.should.equal(totalSupply)			
+			result.toString().should.equal(totalSupply)			
 		})
 
 
