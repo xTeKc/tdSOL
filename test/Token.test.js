@@ -76,7 +76,12 @@ contract('Token', ([deployer,receiver]) => {
 	})
 
 	describe('failure', async () => {
-		
+
+		it('rejects insufficient balances', async () => {
+			let invalidAmount
+			invalidAmount = tokens(100000000) //100 mil (greater than total supply - invalid)
+			await token.transfer(receiver, invalidAmount, { from: deployer }).should.be.rejectedWith('VM Exception while processing transaction: revert');
+		})
 	
 	})	
 
