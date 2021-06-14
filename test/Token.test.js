@@ -60,6 +60,7 @@ contract('Token', ([deployer,receiver]) => {
 			balanceOf.toString().should.equal(tokens(999900).toString())
 			console.log('deployer balance after transfer', balanceOf.toString())			
 			balanceOf = await token.balanceOf(receiver)
+			balanceOf.toString().should.equal(tokens(100).toString())
 			console.log('receiver balance after transfer', balanceOf.toString())
 
 			
