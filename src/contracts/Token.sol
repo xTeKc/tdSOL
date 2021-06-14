@@ -12,6 +12,8 @@ contract Token {
 
 	mapping (address => uint256) public balanceOf;
 
+	event Transfer(address indexed from, address indexed to, uint256 value);
+
 	constructor() public {
 		totalSupply = 1000000 * (10 ** decimals);
 		balanceOf[msg.sender] = totalSupply;
