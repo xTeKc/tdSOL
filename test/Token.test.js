@@ -62,8 +62,12 @@ contract('Token', ([deployer,receiver]) => {
 			balanceOf.toString().should.equal(tokens(999900).toString())
 			balanceOf = await token.balanceOf(receiver)
 			balanceOf.toString().should.equal(tokens(100).toString())
-
 		})
+
+		it('emits transfer event', async () => {
+			console.log(result)
+		})
+
 	})
 
 })
