@@ -65,7 +65,7 @@ contract('Token', ([deployer,receiver]) => {
 		})
 
 		it('emits transfer event', async () => {
-			console.log(result)
+			console.log(result.logs)
 		})
 
 	})
