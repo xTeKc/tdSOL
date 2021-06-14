@@ -50,6 +50,7 @@ contract('Token', ([deployer,receiver]) => {
 		let amount
 		let result
 
+	describe('success', async () => {
 		beforeEach(async () => {
 			amount = tokens(100)
 			result = await token.transfer(receiver, amount, { from: deployer })
@@ -71,7 +72,9 @@ contract('Token', ([deployer,receiver]) => {
 			event.from.toString().should.equal(deployer, 'from value is correct')
 			event.to.should.equal(receiver, 'to is correct')
 			event.value.toString().should.equal(amount.toString(), 'value is correct')
-		})
+		})		
+	})
+
 
 	})
 
