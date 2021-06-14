@@ -47,8 +47,12 @@ contract('Token', ([deployer,receiver]) => {
 	})
 
 	describe('sending tokens', () => {
+		let amount
+		let result
+
 		beforeEach(async () => {
-			await token.transfer(receiver, tokens(100), { from: deployer })
+			amount = tokens(100)
+			result = await token.transfer(receiver, amount, { from: deployer })
 		})
 
 		it('transfers token balances', async () => {
