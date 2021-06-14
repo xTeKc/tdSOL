@@ -31,7 +31,7 @@ contract Token {
 		require(_to != address(0));
 		balanceOf[_from] = balanceOf[_from].sub(_value);
 		balanceOf[_to] = balanceOf[_to].add(_value);
-		emit Transfer(msg.sender, _to, _value);		
+		emit Transfer(_from, _to, _value);		
 	}
 
 	function approve(address _spender, uint256 _value) public returns (bool success) {
