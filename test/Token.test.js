@@ -75,6 +75,10 @@ contract('Token', ([deployer,receiver]) => {
 		})		
 	})
 
+	describe('failure', async () => {
+		
+	
+	})	
 
 	})
 
