@@ -27,6 +27,7 @@ contract Exchange {
     address constant ETHER = address(0); // stor Ether in tokens mapping with blank address
 
 	mapping(address => mapping(address => uint256)) public tokens;
+    mapping (uint256 => _Order) public orders;
 
     // Events
     event Deposit(address token, address user, uint256 amount, uint256 balance);
