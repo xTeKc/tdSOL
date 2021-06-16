@@ -83,6 +83,15 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
                 //Withdraw Ether
                 result = await exchange.withdrawEther(ether(1), { from: user1 })
             })
+
+            it('withdraws Ether funds', async () => {
+                const balance = await exchange.tokens(ETHER_ADDRESS, user1)
+                balance.toString().should.equal('0')
+            })
+        })
+
+        describe('failure', async () => {
+
         })
     })
 
