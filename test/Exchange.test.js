@@ -37,6 +37,15 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
 
 	})
 
+    describe('depositing Ether', async () => {
+        let result
+
+        beforeEach(async () => {
+            
+        })
+
+    })
+
 	describe('depositing tokens', () => {
         let result
         let amount
@@ -73,7 +82,6 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
 
         describe('failure', () => {
             it('rejects ether deposits', async () => {
-                // fill in
                 await exchange.depositToken(ETHER_ADDRESS, tokens(10), { from: user1 }).should.be.rejectedWith(EVM_REVERT)
             })
 
