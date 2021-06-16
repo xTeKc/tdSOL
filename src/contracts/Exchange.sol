@@ -153,9 +153,8 @@ contract Exchange {
         tokens[_tokenGet][feeAccount] = tokens[_tokenGet][feeAccount].add(_feeAmount);
         tokens[_tokenGive][_user] = tokens[_tokenGive][_user].sub(_amountGive);
         tokens[_tokenGive][msg.sender] = tokens[_tokenGive][msg.sender].add(_amountGive);
-        // Charge Fees
 
-        // Emit Trade event
+        emit Trade(_orderId, _user, _tokenGet, _amountGet, _tokenGive, _amountGive, msg.sender, now);
     }
 
 }
