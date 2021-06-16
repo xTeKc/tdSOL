@@ -6,7 +6,7 @@ require('chai')
 	.use(require('chai-as-promised'))
 	.should()
 
-contract('Exchange', ([deployer,receiver, exchange]) => {
+contract('Exchange', ([deployer, feeAccount]) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
 	const decimals = '18'
