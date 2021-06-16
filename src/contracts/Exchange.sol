@@ -37,7 +37,7 @@ contract Exchange {
     }
 
     function depositEther() public {
-        tokens[ETHER][msg.sender] = tokens[_token][msg.sender].add(_amount);
+        tokens[ETHER][msg.sender] = tokens[_token][msg.sender].add(msg.value);
     }
 
     function depositToken(address _token, uint256 _amount) public {
