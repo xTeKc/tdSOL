@@ -37,6 +37,16 @@ contract Exchange {
 
     event Withdraw(address token, address user, uint256 amount, uint256 balance);
 
+    event Order(
+        uint id, 
+        address user,
+        address tokenGet,
+        uint amountGet,
+        address tokenGive,
+        uint amountGive,
+        uint timestamp
+    );
+
     // a way to model order
     struct _Order {
         uint id;
