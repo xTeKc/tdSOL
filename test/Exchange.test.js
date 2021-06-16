@@ -97,7 +97,7 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
                 const event = log.args
                 event.token.should.equal(ETHER_ADDRESS)
                 event.user.should.equal(user1)
-                event.amount.toString().should.equal(ether(1).toString())
+                event.amount.toString().should.equal(amount.toString())
                 event.balance.toString().should.equal('0')
             })	            
 
