@@ -235,6 +235,20 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
             order.amountGive.toString().should.equal(ether(1).toString(), 'amountGive is correct')
             order.timestamp.toString().length.should.be.at.least(1, 'timestamp is present')
         })
+
+        it('emits an Order event', async () => {
+            const log = result.logs[0]
+            log.event.should.equal('Order')
+            const event = log.args
+            event.id.toString().should.equal('1', 'id is correct')
+            event.user.should.equal(user1, 'user is correct')
+            event.tokenGet.should.equal(token.address, 'tokenGet is correct')
+            event.amountGet.toString().should.equal(tokens(1).toString(), 'amountGet is correct')
+            event.tokenGive.should.equal(ETHER_ADDRESS, 'tokenGive is correct')
+            event.amountGive.toString().should.equal(ether(1).toString(), 'amountGive is correct')
+            event.timestamp.toString().length.should.be.at.least(1, 'timestamp is present')
+        })
+
     })
 
  })
