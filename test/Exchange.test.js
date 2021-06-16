@@ -49,9 +49,11 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
 
         describe('success', () => {
             it('tracks the token deposit', async () => {
+                // Check exchange token balance
                 let balance
                 balance = await token.balanceOf(exchange.address)
                 balance.toString().should.equal(amount.toString())
+                // Check tokens on exchange
                 balance = await exchange.tokens(token.address, user1)
                 balance.toString().should.equal(amount.toString())
             })
