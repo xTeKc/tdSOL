@@ -1,12 +1,12 @@
 import { tokens, EVM_REVERT } from './helpers'
 
-const Token = artifacts.require('./Token')
+const Exchange = artifacts.require('./Exchange')
 
 require('chai')
 	.use(require('chai-as-promised'))
 	.should()
 
-contract('Token', ([deployer,receiver, exchange]) => {
+contract('Exchange', ([deployer,receiver, exchange]) => {
 	const name = 'Digital Gold'
 	const symbol = 'DGLD'
 	const decimals = '18'
