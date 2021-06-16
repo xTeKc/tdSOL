@@ -7,11 +7,7 @@ require('chai')
 	.should()
 
 contract('Exchange', ([deployer, feeAccount]) => {
-	const name = 'Digital Gold'
-	const symbol = 'DGLD'
-	const decimals = '18'
-	const totalSupply = tokens(1000000).toString()
-	let token
+	let exchange
 
 	beforeEach(async () => {
 		token = await Token.new()
