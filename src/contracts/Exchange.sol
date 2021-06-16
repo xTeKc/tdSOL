@@ -140,6 +140,7 @@ contract Exchange {
         // execute the Trade
         tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender].sub(_amountGet);
         tokens[_tokenGet][_user] = tokens[_tokenGet][_user].add(_amountGet);
+        tokens[_tokenGet][feeAccount] = tokens[_tokenGet][feeAccount].add(_feeAmount);
         tokens[_tokenGive][_user] = tokens[_tokenGive][_user].sub(_amountGive);
         tokens[_tokenGive][msg.sender] = tokens[_tokenGive][msg.sender].add(_amountGive);
         // Charge Fees
