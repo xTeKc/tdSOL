@@ -1,6 +1,7 @@
 pragma solidity ^0.5.0;
 
 import './Token.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 // Deposit & Withdraw Funds
 // Manage Orders - Make or Cancel
@@ -19,6 +20,7 @@ import './Token.sol';
 //[] Charge fees
 
 contract Exchange {
+	using SafeMath for uint;
 
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
