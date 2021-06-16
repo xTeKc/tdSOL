@@ -65,7 +65,7 @@ contract Exchange {
             address tokenGet,
             uint256 amountGet,
             address tokenGive,
-            uint256 amountGive,
+            uint256 userFill,
             uint256 timestamp
     );    
 
