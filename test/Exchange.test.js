@@ -15,7 +15,7 @@ contract('Exchange', ([deployer, feeAccount]) => {
 
 	describe('deployment', () => {
 
-        it('tracks the fee account', () => {
+        it('tracks the fee account', async () => {
             const result = await exchange.feeAccount()
             result.should.equal(feeAccount)
         })
