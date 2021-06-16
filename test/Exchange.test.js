@@ -10,12 +10,15 @@ contract('Exchange', ([deployer, feeAccount]) => {
 	let exchange
 
 	beforeEach(async () => {
-		token = await Exchange.new()
+		exchange = await Exchange.new()
 	})
 
 	describe('deployment', () => {
 
-
+        it('tracks the fee account', () => {
+            const result = await exchange.feeAccount()
+            result.should.equal(feeAccount)
+        })
 
 	})
 
