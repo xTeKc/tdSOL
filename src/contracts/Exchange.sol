@@ -32,6 +32,19 @@ contract Exchange {
     event Deposit(address token, address user, uint256 amount, uint256 balance);
     event Withdraw(address token, address user, uint256 amount, uint256 balance);
 
+    // a way to model order
+    // a way to stor the order
+    // add the order to storage
+
+    struct _Order {
+        uint id;
+        address user;
+        address tokenGet;
+        uint amountGet;
+        address tokenGive;
+        uint amountGive;
+        uint timestamp;
+    }
 
     constructor(address _feeAccount, uint256 _feePercent) public {
         feeAccount = _feeAccount;
