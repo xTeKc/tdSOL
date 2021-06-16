@@ -37,7 +37,7 @@ contract Exchange {
     }
 
     function depositEther() payable public {
-        tokens[ETHER][msg.sender] = tokens[_token][msg.sender].add(msg.value);
+        tokens[ETHER][msg.sender] = tokens[ETHER][msg.sender].add(msg.value);
         emit Deposit(ETHER, msg.sender, msg.value, tokens[ETHER][msg.sender]);
 
     }
