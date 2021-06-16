@@ -90,6 +90,17 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
                 const balance = await exchange.tokens(ETHER_ADDRESS, user1)
                 balance.toString().should.equal('0')
             })
+
+            it('emits Withdraw event', async () => {
+                const log = result.logs[0]
+                log.event.should.equal('Withdraw')
+                const event = log.args
+                event.token.should.equal(ETHER_ADDRESS)
+                event.user.should.equal(user1)
+                event.amount.toString().should.equal(ether(1).toString())
+                event.balance.toString().should.equal('0')
+            })	            
+
         })
 
         describe('failure', async () => {
