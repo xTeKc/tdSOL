@@ -49,6 +49,16 @@ contract Exchange {
         uint256 timestamp
     );
 
+        event Cancel(
+        uint256 id, 
+        address user,
+        address tokenGet,
+        uint256 amountGet,
+        address tokenGive,
+        uint256 amountGive,
+        uint256 timestamp
+    );
+
     // a way to model order; inside contract
     struct _Order {
         uint256 id;
