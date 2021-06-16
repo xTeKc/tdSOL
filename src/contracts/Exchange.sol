@@ -138,7 +138,7 @@ contract Exchange {
         uint256 _feeAmount = _amountGive.mul(feePercent).div(100);
 
         // execute the Trade
-        tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender].sub(_amountGet);
+        tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender].sub(_amountGet.add(_feeAmount));
         tokens[_tokenGet][_user] = tokens[_tokenGet][_user].add(_amountGet);
         tokens[_tokenGet][feeAccount] = tokens[_tokenGet][feeAccount].add(_feeAmount);
         tokens[_tokenGive][_user] = tokens[_tokenGive][_user].sub(_amountGive);
