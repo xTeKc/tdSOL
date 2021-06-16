@@ -1,3 +1,6 @@
+pragma solidity ^0.5.0;
+
+
 // Deposit & Withdraw Funds
 // Manage Orders - Make or Cancel
 // Handle Trades - Charge Fees
