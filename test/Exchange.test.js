@@ -10,7 +10,7 @@ contract('Exchange', ([deployer, feeAccount]) => {
 	let exchange
 
 	beforeEach(async () => {
-		token = await Token.new()
+		token = await Exchange.new()
 	})
 
 	describe('deployment', () => {
