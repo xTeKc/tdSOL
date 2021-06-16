@@ -28,11 +28,10 @@ contract Exchange {
         feePercent = _feePercent;
     }
 
-    function depositToken() public {
-        //which token?
-        //how much?
-        //manage deposit
+    function depositToken(address _token, uint256 _amount) public {
+        Token(_token).transferFrom(msg.sender, address(this), _amount);
         //send tokens to this contract
+        //manage deposit
         //emit event
     }
 
