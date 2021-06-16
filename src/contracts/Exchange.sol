@@ -9,9 +9,9 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 // TODO
 //[x] Set the fee account
-//[] Deposit Ether
+//[x] Deposit Ether
 //[] Withdraw Ether
-//[] Deposit Tokens
+//[x] Deposit Tokens
 //[] Withdraw Tokens
 //[] Check balances
 //[] Make order
