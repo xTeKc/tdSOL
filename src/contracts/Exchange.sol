@@ -24,6 +24,7 @@ contract Exchange {
 
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
+    address constant ETHER = address(0); // stor Ether in tokens mapping with blank address
 
 	mapping(address => mapping(address => uint256)) public tokens;
 
@@ -35,7 +36,12 @@ contract Exchange {
         feePercent = _feePercent;
     }
 
+    function depositEther() public {
+        tokens[ETHER][msg.sender] = tokens[_token][msg.sender].add(_amount);
+    }
+
     function depositToken(address _token, uint256 _amount) public {
+        //TODO dont allow Ether deposits
         require(Token(_token).transferFrom(msg.sender, address(this), _amount));
         tokens[_token][msg.sender] = tokens[_token][msg.sender].add(_amount);
         emit Deposit(_token, msg.sender, _amount, tokens[_token][msg.sender]);
