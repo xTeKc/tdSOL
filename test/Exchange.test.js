@@ -70,6 +70,15 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
 
     })
 
+    describe('withdrawing Ether', async () => {
+        let result
+
+        beforeEach(async () => {
+            //Deposit Ether first
+            await exchange.depositEther({ from: user1, value: ether(1) })
+        })
+    })
+
 	describe('depositing tokens', () => {
         let result
         let amount
