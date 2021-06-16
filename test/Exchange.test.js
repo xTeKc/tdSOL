@@ -41,13 +41,14 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
         let result
         let amount
 
-        beforeEach(async () => {
-            amount = tokens(10)
-            await token.approve(exchange.address, amount, { from: user1 })
-            result = await exchange.depositToken(token.address, amount, { from: user1 })
-        })
-
         describe('success', () => {
+
+            beforeEach(async () => {
+                amount = tokens(10)
+                await token.approve(exchange.address, amount, { from: user1 })
+                result = await exchange.depositToken(token.address, amount, { from: user1 })
+            })
+
             it('tracks the token deposit', async () => {
                 // Check exchange token balance
                 let balance
@@ -71,7 +72,10 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
         })
 
         describe('failure', () => {
-            
+            it('fails when no tokens are approved', async () => {
+                // Dont approve any tokens before depositing
+                await exchange.depositToken(token.address, tokens(10), { from: user1 }).should.be.rejectedWith(EVM_REVERT)
+            })
         })        
 	})    
 
