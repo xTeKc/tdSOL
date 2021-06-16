@@ -14,7 +14,7 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 //[x] Deposit Tokens
 //[x] Withdraw Tokens
 //[x] Check balances
-//[] Make order
+//[x] Make order
 //[] Cancel order
 //[] Fill order
 //[] Charge fees
@@ -31,6 +31,7 @@ contract Exchange {
     // a way to store the order
     mapping (uint256 => _Order) public orders;
     uint256 public orderCount;
+    mapping(uint256 => bool) public orderCancelled;
 
     // Events
     event Deposit(address token, address user, uint256 amount, uint256 balance);
@@ -105,6 +106,10 @@ contract Exchange {
         orderCount = orderCount.add(1);
         orders[orderCount] = _Order(orderCount, msg.sender, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
         emit Order(orderCount, msg.sender, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
+    }
+
+    function cancelOrder(uint256 _id) public {
+        orderCancelled[_id] = true;
     }
 
 }
