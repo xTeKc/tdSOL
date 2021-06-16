@@ -77,7 +77,15 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
             //Deposit Ether first
             await exchange.depositEther({ from: user1, value: ether(1) })
         })
+
+        describe('success', async () => {
+            beforeEach(async () => {
+                //Withdraw Ether
+                result = await exchange.withdrawEther(ether(1), { from: user1 })
+            })
+        })
     })
+
 
 	describe('depositing tokens', () => {
         let result
