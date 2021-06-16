@@ -1,5 +1,7 @@
 pragma solidity ^0.5.0;
 
+import './Token.sol';
+
 // Deposit & Withdraw Funds
 // Manage Orders - Make or Cancel
 // Handle Trades - Charge Fees
@@ -24,6 +26,14 @@ contract Exchange {
     constructor(address _feeAccount, uint256 _feePercent) public {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
+    }
+
+    function depositToken() public {
+        //which token?
+        //how much?
+        //manage deposit
+        //send tokens to this contract
+        //emit event
     }
 
 }
