@@ -76,6 +76,7 @@ contract('Exchange', ([deployer, feeAccount, user1]) => {
 
         beforeEach(async () => {
             //Deposit Ether first
+            amount = ether(1)
             await exchange.depositEther({ from: user1, value: amount })
         })
 
