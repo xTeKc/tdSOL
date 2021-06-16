@@ -36,8 +36,10 @@ contract Exchange {
         feePercent = _feePercent;
     }
 
-    function depositEther() public {
+    function depositEther() payable public {
         tokens[ETHER][msg.sender] = tokens[_token][msg.sender].add(msg.value);
+        emit Deposit(ETHER, msg.sender, msg.value, tokens[ETHER][msg.sender]);
+
     }
 
     function depositToken(address _token, uint256 _amount) public {
