@@ -138,6 +138,8 @@ contract Exchange {
     }
 
     function fillOrder(uint256 _id) public {
+        require(!orderFilled[_id]);
+        require(!orderCancelled[_id]);
         _Order storage _order = orders[_id];
         _trade(_order.id, _order.user, _order.tokenGet, _order.amountGet, _order.tokenGive, _order.amountGive);
         // Mark Order as filled
