@@ -66,7 +66,8 @@ contract Exchange {
             address tokenGet,
             uint256 amountGet,
             address tokenGive,
-            uint256 userFill,
+            uint256 amountGive,
+            address userFill,
             uint256 timestamp
     );    
 
@@ -150,7 +151,7 @@ contract Exchange {
     function _trade(uint256 _orderId, address _user, address _tokenGet, uint256 _amountGet, address _tokenGive, uint256 _amountGive) internal {
         // Fee is paid by the user that fills the order, (msg.sender)
         // Fee deducted from _amountGet
-        uint256 _feeAmount = _amountGive.mul(feePercent).div(100);
+        uint256 _feeAmount = _amountGet.mul(feePercent).div(100);
 
         // execute the Trade
         tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender].sub(_amountGet.add(_feeAmount));
