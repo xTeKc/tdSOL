@@ -3,22 +3,6 @@ pragma solidity ^0.5.0;
 import './Token.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
-// Deposit & Withdraw Funds
-// Manage Orders - Make or Cancel
-// Handle Trades - Charge Fees
-
-// TODO
-//[x] Set the fee account
-//[x] Deposit Ether
-//[x] Withdraw Ether
-//[x] Deposit Tokens
-//[x] Withdraw Tokens
-//[x] Check balances
-//[x] Make order
-//[x] Cancel order
-//[] Fill order
-//[] Charge fees
-
 contract Exchange {
 	using SafeMath for uint256;
 
@@ -40,14 +24,14 @@ contract Exchange {
     event Withdraw(address token, address user, uint256 amount, uint256 balance);
 
     // outside contract
-    event Order(
-        uint256 id, 
-        address user,
-        address tokenGet,
-        uint256 amountGet,
-        address tokenGive,
-        uint256 amountGive,
-        uint256 timestamp
+        event Order(
+            uint256 id, 
+            address user,
+            address tokenGet,
+            uint256 amountGet,
+            address tokenGive,
+            uint256 amountGive,
+            uint256 timestamp
     );
 
         event Cancel(
@@ -72,14 +56,14 @@ contract Exchange {
     );    
 
     // a way to model order; inside contract
-    struct _Order {
-        uint256 id;
-        address user;
-        address tokenGet;
-        uint256 amountGet;
-        address tokenGive;
-        uint256 amountGive;
-        uint256 timestamp;
+        struct _Order {
+            uint256 id;
+            address user;
+            address tokenGet;
+            uint256 amountGet;
+            address tokenGive;
+            uint256 amountGive;
+            uint256 timestamp;
     }
 
     constructor(address _feeAccount, uint256 _feePercent) public {
