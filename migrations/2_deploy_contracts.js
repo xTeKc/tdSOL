@@ -7,5 +7,5 @@ module.exports = async function (deployer) {
   const accounts = await Web3.eth.getAccounts()
 
   await deployer.deploy(Token);
-  await deployer.deploy(Exchange, 'fee account', 10);
+  await deployer.deploy(Exchange, accounts[0], 10);
 };
