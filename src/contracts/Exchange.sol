@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract Exchange {
 	using SafeMath for uint256;
 
+    address public owner;
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
     address constant ETHER = address(0); // stor Ether in tokens mapping with blank address
@@ -69,6 +70,7 @@ contract Exchange {
     constructor(address _feeAccount, uint256 _feePercent) public {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
+        msg.sender == owner;
     }
 
     // Fallback : reverts if Ether is sent to this smart contract by mistake
@@ -77,31 +79,31 @@ contract Exchange {
     }
 
     function depositEther() payable public {
-        tokens[ETHER][msg.sender] = tokens[ETHER][msg.sender].add(msg.value);
-        emit Deposit(ETHER, msg.sender, msg.value, tokens[ETHER][msg.sender]);
+        tokens[ETHER][owner] = tokens[ETHER][owner].add(msg.value);
+        emit Deposit(ETHER, owner, msg.value, tokens[ETHER][owner]);
     }
 
-    function withdrawEther(uint256 _amount) public {
-        require(tokens[ETHER][msg.sender] >= _amount);
-        tokens[ETHER][msg.sender] = tokens[ETHER][msg.sender].sub(_amount);
-        msg.sender.transfer(_amount);
-        emit Withdraw(ETHER, msg.sender, _amount, tokens[ETHER][msg.sender]);
+    function withdrawEther(uint256 _amount) payable public {
+        require(tokens[ETHER][owner] >= _amount);
+        tokens[ETHER][owner] = tokens[ETHER][owner].sub(_amount);
+        owner.transfer(_amount);
+        emit Withdraw(ETHER, owner, _amount, tokens[ETHER][owner]);
     } 
 
     function depositToken(address _token, uint256 _amount) public {
         //TODO dont allow Ether deposits
         require(_token != ETHER);
-        require(Token(_token).transferFrom(msg.sender, address(this), _amount));
-        tokens[_token][msg.sender] = tokens[_token][msg.sender].add(_amount);
-        emit Deposit(_token, msg.sender, _amount, tokens[_token][msg.sender]);
+        require(Token(_token).transferFrom(owner, address(this), _amount));
+        tokens[_token][owner] = tokens[_token][owner].add(_amount);
+        emit Deposit(_token, owner, _amount, tokens[_token][owner]);
     }
 
     function withdrawToken(address _token, uint256 _amount) public {
         require(_token != ETHER);
-        require(tokens[_token][msg.sender] >= _amount);
-        tokens[_token][msg.sender] = tokens[_token][msg.sender].sub(_amount);
-        require(Token(_token).transfer(msg.sender, _amount));
-        emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
+        require(tokens[_token][owner] >= _amount);
+        tokens[_token][owner] = tokens[_token][owner].sub(_amount);
+        require(Token(_token).transfer(owner, _amount));
+        emit Withdraw(_token, owner, _amount, tokens[_token][owner]);
     }
 
     function balanceOf(address _token, address _user) public view returns (uint256) {
@@ -110,16 +112,16 @@ contract Exchange {
 
     function makeOrder(address _tokenGet, uint256 _amountGet, address _tokenGive, uint256 _amountGive) public {
         orderCount = orderCount.add(1);
-        orders[orderCount] = _Order(orderCount, msg.sender, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
-        emit Order(orderCount, msg.sender, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
+        orders[orderCount] = _Order(orderCount, owner, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
+        emit Order(orderCount, owner, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
     }
 
     function cancelOrder(uint256 _id) public {
         _Order storage _order = orders[_id];
-        require(address(_order.user) == msg.sender);
+        require(address(_order.user) == owner);
         require(_order.id == _id); // the order must exist
         orderCancelled[_id] = true;
-        emit Cancel(_order.id, msg.sender, _order.tokenGet, _order.amountGet, _order.tokenGive, _order.amountGive, now);
+        emit Cancel(_order.id, owner, _order.tokenGet, _order.amountGet, _order.tokenGive, _order.amountGive, now);
     }
 
     function fillOrder(uint256 _id) public {
@@ -133,18 +135,18 @@ contract Exchange {
     }
 
     function _trade(uint256 _orderId, address _user, address _tokenGet, uint256 _amountGet, address _tokenGive, uint256 _amountGive) internal {
-        // Fee is paid by the user that fills the order, (msg.sender)
+        // Fee is paid by the user that fills the order, (owner)
         // Fee deducted from _amountGet
         uint256 _feeAmount = _amountGet.mul(feePercent).div(100);
 
         // execute the Trade
-        tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender].sub(_amountGet.add(_feeAmount));
+        tokens[_tokenGet][owner] = tokens[_tokenGet][owner].sub(_amountGet.add(_feeAmount));
         tokens[_tokenGet][_user] = tokens[_tokenGet][_user].add(_amountGet);
         tokens[_tokenGet][feeAccount] = tokens[_tokenGet][feeAccount].add(_feeAmount);
         tokens[_tokenGive][_user] = tokens[_tokenGive][_user].sub(_amountGive);
-        tokens[_tokenGive][msg.sender] = tokens[_tokenGive][msg.sender].add(_amountGive);
+        tokens[_tokenGive][owner] = tokens[_tokenGive][owner].add(_amountGive);
 
-        emit Trade(_orderId, _user, _tokenGet, _amountGet, _tokenGive, _amountGive, msg.sender, now);
+        emit Trade(_orderId, _user, _tokenGet, _amountGet, _tokenGive, _amountGive, owner, now);
     }
 
 }
