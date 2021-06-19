@@ -26,6 +26,20 @@ module.exports = async function(callback) {
         const user1 = accounts[0]
         const user2 = accounts[1]
 
+        //User1 Deposits Ether
+        amount = 1 
+        await exchange.depositEther({ from: user1, value: ether(amount) })
+        console.log(`Deposited ${amount} Ether from ${user1}`)
+
+        //User2 Approves Tokens
+        amount = 10000
+        await token.approve(exchange.address, tokens(amount), { from: user2 })
+        console.log(`Approved ${amount} tokens from ${user2}`)
+
+        //User2 Deposits Tokens
+        await exchange.depositToken(token.address, tokens(amount), { from: user2 })
+        console.log(`Deposited ${amount} tokens from ${user2}`)
+
     } 
     catch(err) {
         console.log(error)
