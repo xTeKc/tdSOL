@@ -10,6 +10,10 @@ module.exports = async function(callback) {
         const token = await Token.deployed()
         console.log('Token fetched', token.address)
 
+        //Fetch the deployed Exchange
+        const exchange = await Exchange.deployed()
+        console.log('Exchange fetched', exchange.address)
+
     } 
     catch(err) {
         console.log(error)
