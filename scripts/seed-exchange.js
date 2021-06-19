@@ -20,7 +20,7 @@ module.exports = async function(callback) {
         let amount = web3.utils.toWei('10000', 'ether') // 10_000 tokens
 
         await token.transfer(receiver, amount, { from: sender })
-        console.log('Transferred ${amount} tokens from ${sender} to ${receiver}')
+        console.log(`Transferred ${amount} tokens from ${sender} to ${receiver}`)
 
     } 
     catch(err) {
