@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract Exchange {
 	using SafeMath for uint256;
 
-    address public owner;
+    address payable public owner;
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
     address constant ETHER = address(0); // stor Ether in tokens mapping with blank address
@@ -83,7 +83,7 @@ contract Exchange {
         emit Deposit(ETHER, owner, msg.value, tokens[ETHER][owner]);
     }
 
-    function withdrawEther(uint256 _amount) payable public {
+    function withdrawEther(uint256 _amount) public {
         require(tokens[ETHER][owner] >= _amount);
         tokens[ETHER][owner] = tokens[ETHER][owner].sub(_amount);
         owner.transfer(_amount);
