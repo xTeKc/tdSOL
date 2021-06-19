@@ -112,8 +112,8 @@ contract Exchange {
 
     function makeOrder(address _tokenGet, uint256 _amountGet, address _tokenGive, uint256 _amountGive) public {
         orderCount = orderCount.add(1);
-        orders[orderCount] = _Order(orderCount, owner, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
-        emit Order(orderCount, owner, _tokenGet, _amountGet, _tokenGive, _amountGive, now);
+        orders[orderCount] = _Order(orderCount, owner, _tokenGet, _amountGet, _tokenGive, _amountGive, block.timestamp);
+        emit Order(orderCount, owner, _tokenGet, _amountGet, _tokenGive, _amountGive, block.timestamp);
     }
 
     function cancelOrder(uint256 _id) public {
@@ -121,7 +121,7 @@ contract Exchange {
         require(address(_order.user) == owner);
         require(_order.id == _id); // the order must exist
         orderCancelled[_id] = true;
-        emit Cancel(_order.id, owner, _order.tokenGet, _order.amountGet, _order.tokenGive, _order.amountGive, now);
+        emit Cancel(_order.id, owner, _order.tokenGet, _order.amountGet, _order.tokenGive, _order.amountGive, block.timestamp);
     }
 
     function fillOrder(uint256 _id) public {
@@ -146,7 +146,7 @@ contract Exchange {
         tokens[_tokenGive][_user] = tokens[_tokenGive][_user].sub(_amountGive);
         tokens[_tokenGive][owner] = tokens[_tokenGive][owner].add(_amountGive);
 
-        emit Trade(_orderId, _user, _tokenGet, _amountGet, _tokenGive, _amountGive, owner, now);
+        emit Trade(_orderId, _user, _tokenGet, _amountGet, _tokenGive, _amountGive, owner, block.timestamp);
     }
 
 }
