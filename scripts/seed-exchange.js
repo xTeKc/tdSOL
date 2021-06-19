@@ -1,5 +1,10 @@
 module.exports = async function(callback) {
-    //TODO: fill in
-    console.log('script running')
+    try {
+        console.log('script running...')
+    } 
+    catch(err) {
+        console.log(error)
+    }
+    
     callback()
 }
