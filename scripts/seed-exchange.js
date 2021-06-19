@@ -1,5 +1,5 @@
-module.exports = asyc function(callback) {
+module.exports = async function(callback) {
     //TODO: fill in
-    
+
     callback()
 }
