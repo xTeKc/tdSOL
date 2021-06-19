@@ -40,6 +40,20 @@ module.exports = async function(callback) {
         await exchange.depositToken(token.address, tokens(amount), { from: user2 })
         console.log(`Deposited ${amount} tokens from ${user2}`)
 
+        /////////////////////////////////////////////////////////////
+        // Seed a Cancelled Order
+
+        //User1 makes order to get tokens
+        let result
+        let orderId
+        result = await exchange.makeOrder(token.address, tokens(100), ETHER_ADDRESS, ether(0.1), { from: user1 })
+        console.log(`Made order from ${user1}`)
+
+        //User1 cancells order
+        orderId = result.logs[0].args.id 
+        await exchange.cancelOrder(orderId, { from: user1 })
+        console.log(`Cancelled order from ${user1}`)
+
     } 
     catch(err) {
         console.log(error)
