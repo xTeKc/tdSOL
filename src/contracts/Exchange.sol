@@ -67,7 +67,7 @@ contract Exchange {
             uint256 timestamp;
     }
 
-    constructor(address _feeAccount, uint256 _feePercent) public {
+    constructor(address _feeAccount, uint256 _feePercent) {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
         owner == msg.sender;
