@@ -1,5 +1,24 @@
+//Contracts
 const Token = artifacts.require("Token");
 const Exchange = artifacts.require("Exchange");
+
+//Utils
+const ETHER_ADDRESS = '0x0000000000000000000000000000000000000000' //Ether token deposit address
+
+const ether = (n) => {
+  return new web3.utils.BN(
+    web3.utils.toWei(n.toString(), 'ether')
+  )
+}
+
+//same as ether
+const tokens = (n) => ether(n)
+
+const wait = (seconds) => {
+    const miliseconds = seconds * 1000
+    return new Promise(resolve => setTimeout(resolve, miliseconds))
+}
+
 
 module.exports = async function(callback) {
     try {
@@ -40,7 +59,7 @@ module.exports = async function(callback) {
         await exchange.depositToken(token.address, tokens(amount), { from: user2 })
         console.log(`Deposited ${amount} tokens from ${user2}`)
 
-        /////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
         // Seed a Cancelled Order
 
         //User1 makes order to get tokens
@@ -54,7 +73,7 @@ module.exports = async function(callback) {
         await exchange.cancelOrder(orderId, { from: user1 })
         console.log(`Cancelled order from ${user1}`)
 
-        ////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
         // Seed Filled Orders
 
         //User1 makes order
@@ -93,8 +112,28 @@ module.exports = async function(callback) {
         //Wait 1 second
         await wait(1)
 
+        ///////////////////////////////////////////////////////////
+        // Seed Open Orders
+
+        //User1 makes 10 orders
+        for (let i = 1; i <= 10; i++) {
+            result = await exchange.makeOrder(token.address, tokens(10 * i), ETHER_ADDRESS, ether(0.01), { from: user1 })
+            console.log(`Made order from ${user1}`)
+            //Wait 1 second
+            await wait(1)
+        }
+
+        //User2 makes 10 orders
+        for (let i = 1; i <= 10; i++) {
+            result = await exchange.makeOrder(token.address, tokens(10 * i), ETHER_ADDRESS, ether(0.01), { from: user2 })
+            console.log(`Made order from ${user2}`)
+            //Wait 1 second
+            await wait(1)
+        }       
+
+
     } 
-    catch(err) {
+    catch(error) {
         console.log(error)
     }
     
