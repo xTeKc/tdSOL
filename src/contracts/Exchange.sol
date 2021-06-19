@@ -70,7 +70,7 @@ contract Exchange {
     constructor(address _feeAccount, uint256 _feePercent) public {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
-        msg.sender == owner;
+        owner == msg.sender;
     }
 
     // Fallback : reverts if Ether is sent to this smart contract by mistake

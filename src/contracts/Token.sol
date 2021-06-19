@@ -10,6 +10,8 @@ contract Token {
 	uint256 public decimals = 18;
 	uint256 public totalSupply;
 
+	address payable public owner;
+
 	mapping(address => uint256) public balanceOf;
 	mapping(address => mapping(address => uint256)) public allowance;
 
@@ -18,12 +20,13 @@ contract Token {
 
 	constructor() public {
 		totalSupply = 1000000 * (10 ** decimals);
-		balanceOf[msg.sender] = totalSupply;
+		balanceOf[owner] = totalSupply;
+		owner == msg.sender;
 	}
 
 	function transfer(address _to, uint256 _value) public returns (bool success) {
-		require(balanceOf[msg.sender] >= _value);
-		_transfer(msg.sender, _to, _value);
+		require(balanceOf[owner] >= _value);
+		_transfer(owner, _to, _value);
 		return true;
 	}
 
@@ -36,15 +39,15 @@ contract Token {
 
 	function approve(address _spender, uint256 _value) public returns (bool success) {
 		require(_spender != address(0));
-		allowance[msg.sender][_spender] = _value;
-		emit Approval(msg.sender, _spender, _value);
+		allowance[owner][_spender] = _value;
+		emit Approval(owner, _spender, _value);
 		return true;
 	}
 
 	function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
 		require(_value <= balanceOf[_from]);
-		require(_value <= allowance[_from][msg.sender]);
-		allowance[_from][msg.sender] = allowance[_from][msg.sender].sub(_value);
+		require(_value <= allowance[_from][owner]);
+		allowance[_from][owner] = allowance[_from][owner].sub(_value);
 		_transfer(_from, _to, _value);
 		return true;
 	}
