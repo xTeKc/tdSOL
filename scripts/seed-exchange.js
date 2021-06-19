@@ -54,6 +54,45 @@ module.exports = async function(callback) {
         await exchange.cancelOrder(orderId, { from: user1 })
         console.log(`Cancelled order from ${user1}`)
 
+        ////////////////////////////////////////////////////////////
+        // Seed Filled Orders
+
+        //User1 makes order
+        result = await exchange.makeOrder(token.address, tokens(100), ETHER_ADDRESS, ether(0.1), { from: user1 })
+        console.log(`Made order from ${user1}`)
+
+        //User2 fills order
+        orderId = result.logs[0].args.id
+        await exchange.fillOrder(orderId, { from: user2 })
+        console.log(`Filled order frorm ${user1}`)
+
+        //Wait 1 second
+        await wait(1)
+
+        //User1 makes another order
+        result = await exchange.makeOrder(token.address, tokens(50), ETHER_ADDRESS, ether(0.1), { from: user1 })
+        console.log(`Made order from ${user1}`)
+        
+        //User2 fills another order
+        orderId = result.logs[0].args.id
+        await exchange.fillOrder(orderId, { from: user2 })
+        console.log(`Filled order frorm ${user1}`)
+
+        //Wait 1 second
+        await wait(1)
+
+        //User1 makes final order
+        result = await exchange.makeOrder(token.address, tokens(200), ETHER_ADDRESS, ether(0.15), { from: user1 })
+        console.log(`Made order from ${user1}`)
+        
+        //User2 fills final order
+        orderId = result.logs[0].args.id
+        await exchange.fillOrder(orderId, { from: user2 })
+        console.log(`Filled order frorm ${user1}`)
+        
+        //Wait 1 second
+        await wait(1)
+
     } 
     catch(err) {
         console.log(error)
