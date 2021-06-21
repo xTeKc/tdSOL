@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract Token {
 	using SafeMath for uint;
 
+	//state variables
 	string public name = 'Digital Gold';
 	string public symbol = 'DGLD';
 	uint256 public decimals = 18;
@@ -25,6 +26,7 @@ contract Token {
 	//event for the approval of amount
 	event Approval(address indexed owner, address indexed spender, uint256 value);
 
+	//setting totalSupply and owner, with the owner = to the totalSupply
 	constructor() {
 		totalSupply = 1000000 * (10 ** decimals);
 		balanceOf[owner] = totalSupply;
@@ -32,6 +34,8 @@ contract Token {
 		owner == msg.sender;
 	}
 
+	//transfer func with local variables of _to and _value
+	//making transfer from supply and to the address _to with a num _value of, return a bool
 	function transfer(address _to, uint256 _value) public returns (bool success) {
 		require(balanceOf[owner] >= _value);
 		_transfer(owner, _to, _value);
