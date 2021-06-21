@@ -11,6 +11,7 @@ contract Exchange {
     //declare using safemath
 	using SafeMath for uint256;
 
+    //define the owner as a payable address
     address payable public owner;
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
@@ -71,10 +72,12 @@ contract Exchange {
             uint256 amountGive;
             uint256 timestamp;
     }
-
+    
+    //define the feeAccount and feePercent once throughout contract life
     constructor(address _feeAccount, uint256 _feePercent) {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
+        //define owner = msg.sender
         owner == msg.sender;
     }
 
