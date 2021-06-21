@@ -2,9 +2,11 @@
 
 pragma solidity ^0.8.0;
 
+//import openzeppelin contract for secure math
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract Token {
+	//declare using safemath from import
 	using SafeMath for uint;
 
 	//state variables
@@ -53,6 +55,7 @@ contract Token {
 	}
 
 	function approve(address _spender, uint256 _value) public returns (bool success) {
+		//req _spender to not be the owner(address[0])
 		require(_spender != address(0));
 		allowance[owner][_spender] = _value;
 		emit Approval(owner, _spender, _value);
