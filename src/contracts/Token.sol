@@ -15,7 +15,9 @@ contract Token {
 	//define owner of contract
 	address payable public owner;
 
+	//mapping an address to an amount
 	mapping(address => uint256) public balanceOf;
+	//mapping an address to another address, then to an amount
 	mapping(address => mapping(address => uint256)) public allowance;
 
 	//event for the transfer of one address to another
