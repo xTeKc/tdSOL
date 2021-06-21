@@ -2,10 +2,13 @@
 
 pragma solidity ^0.8.0;
 
+//import Token contract to use within this contract
 import './Token.sol';
+//use secure math with openzeppelin contract
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract Exchange {
+    //declare using safemath
 	using SafeMath for uint256;
 
     address payable public owner;
