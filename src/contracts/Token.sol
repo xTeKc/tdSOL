@@ -12,6 +12,7 @@ contract Token {
 	uint256 public decimals = 18;
 	uint256 public totalSupply;
 
+	//define owner of contract
 	address payable public owner;
 
 	mapping(address => uint256) public balanceOf;
@@ -23,6 +24,7 @@ contract Token {
 	constructor() {
 		totalSupply = 1000000 * (10 ** decimals);
 		balanceOf[owner] = totalSupply;
+		//make owner be equal to msg.sender
 		owner == msg.sender;
 	}
 
