@@ -37,12 +37,15 @@ contract Token {
 	//transfer func with local variables of _to and _value
 	//making transfer from supply and to the address _to with a num _value of, return a bool
 	function transfer(address _to, uint256 _value) public returns (bool success) {
+		//req balance of the supply to be greater than or equal to the _value
 		require(balanceOf[owner] >= _value);
 		_transfer(owner, _to, _value);
 		return true;
 	}
 
+    //private _transfer func with local variables of _from address, _to address and _value 
 	function _transfer(address _from, address _to, uint256 _value) internal {
+		//req the _to address to Not be the owner(address[0])
 		require(_to != address(0));
 		balanceOf[_from] = balanceOf[_from].sub(_value);
 		balanceOf[_to] = balanceOf[_to].add(_value);
