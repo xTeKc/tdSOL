@@ -12,7 +12,7 @@ contract Exchange {
 	using SafeMath for uint256;
 
     //define the msg.sender as a payable address
-    address payable public msg.sender;
+    //address payable public msg.sender;
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
     address constant ETHER = address(0); // stor Ether in tokens mapping with blank address
