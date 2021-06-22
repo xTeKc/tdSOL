@@ -12,7 +12,7 @@ contract Exchange {
 	using SafeMath for uint256;
 
     //define the msg.sender as a payable address
-    //address payable public msg.sender;
+    address payable public owner;
     address public feeAccount; //the fee account that receives exchange fees
     uint256 public feePercent; //the fee percentage
     address constant ETHER = address(0); // stor Ether in tokens mapping with blank address
@@ -78,7 +78,7 @@ contract Exchange {
         feeAccount = _feeAccount;
         feePercent = _feePercent;
         //define msg.sender = msg.sender
-        //msg.sender == msg.sender;
+        msg.sender == owner;
     }
 
     // Fallback : reverts if Ether is sent to this smart contract by mistake
@@ -94,7 +94,7 @@ contract Exchange {
     function withdrawEther(uint256 _amount) public {
         require(tokens[ETHER][msg.sender] >= _amount);
         tokens[ETHER][msg.sender] = tokens[ETHER][msg.sender].sub(_amount);
-        msg.sender.transfer(_amount);
+        owner.transfer(_amount);
         emit Withdraw(ETHER, msg.sender, _amount, tokens[ETHER][msg.sender]);
     } 
 
