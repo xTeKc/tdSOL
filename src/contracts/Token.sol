@@ -26,7 +26,7 @@ contract Token {
 	//event for the transfer of one address to another
 	event Transfer(address indexed from, address indexed to, uint256 value);
 	//event for the approval of amount
-	event Approval(address indexed msg.sender, address indexed spender, uint256 value);
+	event Approval(address indexed owner, address indexed spender, uint256 value);
 
 	//setting totalSupply and msg.sender, with the msg.sender = to the totalSupply
 	constructor() {
