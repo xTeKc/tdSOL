@@ -85,7 +85,7 @@ class Content extends Component {
 
 function mapStateToProps(state) {
   return {
-    // TODO: Fill me in...
+    exchange: exchangeSelector(state)
   }
 }
 
