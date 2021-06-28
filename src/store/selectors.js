@@ -73,3 +73,9 @@ const decorateOrder = (order) => {
   })
 }
 
+const decorateFilledOrder = (order, previousOrder) => {
+  return({
+    ...order,
+    tokenPriceClass: tokenPriceClass(order.tokenPrice, order.id, previousOrder)
+  })
+}
