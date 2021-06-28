@@ -4,6 +4,7 @@ import { exchangeSelector } from '../store/selectors'
 import { loadAllOrders } from '../store/interactions'
 import OrderBook from './OrderBook'
 import Trades from './Trades'
+import MyTransactions from './MyTransactions'
 
 class Content extends Component {
   componentWillMount() {
