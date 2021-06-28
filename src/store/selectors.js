@@ -152,3 +152,13 @@ export const orderBookSelector = createSelector(
     return orders
   }
 )
+
+const decorateOrderBookOrders = (orders) => {
+  return(
+    orders.map((order) => {
+      order = decorateOrder(order)
+      order = decorateOrderBookOrder(order)
+      return(order)
+    })
+  )
+}
