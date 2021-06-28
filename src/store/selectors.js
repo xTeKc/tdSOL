@@ -46,3 +46,15 @@ const decorateFilledOrders = (orders) => {
     })
   )
 }
+
+const decorateOrder = (order) => {
+  let etherAmount
+  let tokenAmount
+
+  if(order.tokenGive == ETHER_ADDRESS) {
+    etherAmount = order.amountGive
+    tokenAmount = order.amountGet
+  } else {
+    etherAmount = order.amountGet
+    tokenAmount = order.amountGive
+  }
