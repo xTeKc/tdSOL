@@ -12,3 +12,11 @@ export function web3Loaded(connection) {
       account
     }
   }
+
+  // TOKEN
+export function tokenLoaded(contract) {
+    return {
+      type: 'TOKEN_LOADED',
+      contract
+    }
+  }
