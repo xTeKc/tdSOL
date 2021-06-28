@@ -67,5 +67,12 @@ export const loadWeb3 = async (dispatch) => {
     const filledOrders = tradeStream.map((event) => event.returnValues)
     // Add cancelled orders to the redux store
     dispatch(filledOrdersLoaded(filledOrders))
+
+      // Load order stream
+  const orderStream = await exchange.getPastEvents('Order', { fromBlock: 0,  toBlock: 'latest' })
+  // Format order stream
+  const allOrders = orderStream.map((event) => event.returnValues)
+  // Add open orders to the redux store
+  dispatch(allOrdersLoaded(allOrders))
   
   }
