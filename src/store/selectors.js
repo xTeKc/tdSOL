@@ -162,3 +162,13 @@ const decorateOrderBookOrders = (orders) => {
     })
   )
 }
+
+const decorateOrderBookOrder = (order) => {
+  const orderType = order.tokenGive === ETHER_ADDRESS ? 'buy' : 'sell'
+  return({
+    ...order,
+    orderType,
+    orderTypeClass: (orderType === 'buy' ? GREEN : RED),
+    orerFillClass: orderType === 'buy' ? 'sell' : 'buy'
+  })
+}
