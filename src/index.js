@@ -7,6 +7,8 @@ import configureStore from './store/configureStore';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 
+const store = configureStore()
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
