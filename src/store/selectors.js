@@ -85,3 +85,12 @@ const tokenPriceClass = (tokenPrice, orderId, previousOrder) => {
   if(previousOrder.id === orderId) {
     return GREEN
   }
+
+    // Show green price if order price higher than previous order
+  // Show red price if order price lower than previous order
+  if(previousOrder.tokenPrice <= tokenPrice) {
+    return GREEN // success
+  } else {
+    return RED // danger
+  }
+}
