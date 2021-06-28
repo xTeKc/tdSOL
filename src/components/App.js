@@ -16,8 +16,7 @@ class App extends Component {
     const networkId = await web3.eth.net.getId()
     const accounts = await loadAccount(web3, dispatch)
     const token = await loadToken(web3, networkId, dispatch)
-    const totalSupply = await token.methods.totalSupply().call()
-    console.log("totalSupply", totalSupply)
+    const exchange = await loadExchange(web3, networkId, dispatch)
   }
 
   render() {
