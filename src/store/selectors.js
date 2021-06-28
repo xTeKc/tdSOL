@@ -126,3 +126,29 @@ const openOrders = state => {
 
 const orderBookLoaded = state => cancelledOrdersLoaded(state) && filledOrdersLoaded(state) && allOrdersLoaded(state)
 export const orderBookLoadedSelector = createSelector(orderBookLoaded, loaded => loaded)
+
+// Create the order book
+export const orderBookSelector = createSelector(
+  openOrders,
+  (orders) => {
+    // Decorate orders
+    orders = decorateOrderBookOrders(orders)
+    // Group orders by "orderType"
+    orders = groupBy(orders, 'orderType')
+    // Fetch buy orders
+    const buyOrders = get(orders, 'buy', [])
+    // Sort buy orders by token price
+    orders = {
+      ...orders,
+      buyOrders: buyOrders.sort((a,b) => b.tokenPrice - a.tokenPrice)
+    }
+    // Fetch sell orders
+    const sellOrders = get(orders, 'sell', [])
+    // Sort sell orders by token price
+    orders = {
+      ...orders,
+      sellOrders: sellOrders.sort((a,b) => b.tokenPrice - a.tokenPrice)
+    }
+    return orders
+  }
+)
