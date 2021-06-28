@@ -11,6 +11,15 @@ function web3(state = {}, action) {
     }
   }
 
+  function token(state = {}, action) {
+    switch (action.type) {
+      case 'TOKEN_LOADED':
+        return { ...state, contract: action.contract }
+      default:
+        return state
+    }
+  }
+
 const rootReducer = combineReducers({
     web3: web3
 })
