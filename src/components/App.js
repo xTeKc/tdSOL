@@ -108,4 +108,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    // TODO: Fill me in...
+  }
+}
+
+export default connect(mapStateToProps)(App);
