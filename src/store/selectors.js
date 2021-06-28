@@ -109,3 +109,17 @@ const tokenPriceClass = (tokenPrice, orderId, previousOrder) => {
     return RED // danger
   }
 }
+
+const openOrders = state => {
+  const all = allOrders(state)
+  const filled = filledOrders(state)
+  const cancelled = cancelledOrders(state)
+
+  const openOrders = reject(all, (order) => {
+    const orderFilled = filled.some((o) => o.id === order.id)
+    const orderCancelled = cancelled.some((o) => o.id === order.id)
+    return(orderFilled || orderCancelled)
+  })
+
+  return openOrders
+}
