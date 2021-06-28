@@ -4,6 +4,9 @@ import Web3 from 'web3'
 import { connect } from 'react-redux'
 import {
   loadWeb3,
+  loadAccount,
+  loadToken,
+  loadExchange
 } from '../store/interactions'
 
 class App extends Component {
