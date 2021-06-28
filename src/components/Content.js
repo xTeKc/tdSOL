@@ -3,6 +3,13 @@ import { connect } from 'react-redux'
 import { loadAllOrders } from '../store/interactions'
 
 class Content extends Component {
+  componentWillMount() {
+    this.loadBlockchainData(this.props.dispatch)
+  }
+
+  async loadBlockchainData(dispatch) {
+    await loadAllOrders(this.props.exchange, dispatch)
+  }
 
   render() {
     return (
