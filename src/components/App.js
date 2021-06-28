@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Navbar from './Navbar'
 import Content from './Content'
-import Web3 from 'web3'
 import { connect } from 'react-redux'
 import {
   loadWeb3,
