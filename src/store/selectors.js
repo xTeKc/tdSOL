@@ -6,3 +6,6 @@ export const accountSelector = createSelector(account, a => a)
 
 const tokenLoaded = state => get(state, 'token.loaded', false)
 export const tokenLoadedSelector = createSelector(tokenLoaded, tl => tl)
+
+const exchangeLoaded = state => get(state, 'exchange.loaded', false)
+export const exchangeLoadedSelector = createSelector(exchangeLoaded, el => el)
