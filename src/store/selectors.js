@@ -123,3 +123,6 @@ const openOrders = state => {
 
   return openOrders
 }
+
+const orderBookLoaded = state => cancelledOrdersLoaded(state) && filledOrdersLoaded(state) && allOrdersLoaded(state)
+export const orderBookLoadedSelector = createSelector(orderBookLoaded, loaded => loaded)
