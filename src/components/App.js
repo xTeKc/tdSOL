@@ -24,6 +24,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.accounts)
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
