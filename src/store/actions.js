@@ -35,3 +35,10 @@ export function exchangeLoaded(contract) {
       cancelledOrders
     }
   }
+
+  export function filledOrdersLoaded(filledOrders) {
+    return {
+      type: 'FILLED_ORDERS_LOADED',
+      filledOrders
+    }
+  }
