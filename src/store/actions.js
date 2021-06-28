@@ -42,3 +42,10 @@ export function exchangeLoaded(contract) {
       filledOrders
     }
   }
+
+  export function allOrdersLoaded(allOrders) {
+    return {
+      type: 'ALL_ORDERS_LOADED',
+      allOrders
+    }
+  }  
