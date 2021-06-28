@@ -5,7 +5,7 @@ import { loadAllOrders } from '../store/interactions'
 import Trades from './Trades'
 
 class Content extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.loadBlockchainData(this.props.dispatch)
   }
 
