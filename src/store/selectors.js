@@ -33,3 +33,16 @@ export const filledOrdersSelector = createSelector(
     return orders
   }
 )
+
+const decorateFilledOrders = (orders) => {
+  // Track previous order to compare history
+  let previousOrder = orders[0]
+  return(
+    orders.map((order) => {
+      order = decorateOrder(order)
+      order = decorateFilledOrder(order, previousOrder)
+      previousOrder = order // Update the previous order once it's decorated
+      return order
+    })
+  )
+}
