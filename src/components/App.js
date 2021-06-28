@@ -14,7 +14,7 @@ class App extends Component {
     this.loadBlockchainData(this.props.dispatch)
   }
 
-  async loadBlockchainData() {
+  async loadBlockchainData(dispatch) {
     const web3 = await loadWeb3(dispatch)
     const networkId = await web3.eth.net.getId()
     const accounts = await loadAccount(web3, dispatch)
