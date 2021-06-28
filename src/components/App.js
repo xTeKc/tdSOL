@@ -116,7 +116,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    // TODO: Fill me in...
+    contractsLoaded: contractsLoadedSelector(state)
   }
 }
 
