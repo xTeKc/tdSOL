@@ -79,3 +79,9 @@ const decorateFilledOrder = (order, previousOrder) => {
     tokenPriceClass: tokenPriceClass(order.tokenPrice, order.id, previousOrder)
   })
 }
+
+const tokenPriceClass = (tokenPrice, orderId, previousOrder) => {
+  // Show green price if only one order exists
+  if(previousOrder.id === orderId) {
+    return GREEN
+  }
