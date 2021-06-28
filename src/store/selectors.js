@@ -58,3 +58,18 @@ const decorateOrder = (order) => {
     etherAmount = order.amountGet
     tokenAmount = order.amountGive
   }
+
+  // Calculate token price to 5 decimal places
+  const precision = 100000
+  let tokenPrice = (etherAmount / tokenAmount)
+  tokenPrice = Math.round(tokenPrice * precision) / precision
+
+  return({
+    ...order,
+    etherAmount: ether(etherAmount),
+    tokenAmount: tokens(tokenAmount),
+    tokenPrice,
+    formattedTimestamp: moment.unix(order.timestamp).format('h:mm:ss a M/D')
+  })
+}
+
