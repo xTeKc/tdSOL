@@ -41,3 +41,14 @@ export const loadWeb3 = async (dispatch) => {
       return null
     }
   }
+
+  export const loadExchange = async (web3, networkId, dispatch) => {
+    try {
+      const exchange = new web3.eth.Contract(Exchange.abi, Exchange.networks[networkId].address)
+      dispatch(exchangeLoaded(exchange))
+      return exchange
+    } catch (error) {
+      console.log('Contract not deployed to the current network. Please select another network with Metamask.')
+      return null
+    }
+  }
