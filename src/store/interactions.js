@@ -1,7 +1,12 @@
 import Web3 from 'web3'
 import {
-  web3Loaded,
+  web3Loaded,  
+  web3AccountLoaded,
+  tokenLoaded,
+  exchangeLoaded
 } from './actions'
+import Token from '../abis/Token.json'
+import Exchange from '../abis/Exchange.json'
 
 export const loadWeb3 = async (dispatch) => {
     if(typeof window.ethereum!=='undefined'){
