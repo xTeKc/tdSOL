@@ -3,6 +3,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 require('babel-register');
 require('babel-polyfill');
 require("dotenv").config();
+const privateKeys = process.env.PRIVATE_KEYS || ""
 
 module.exports = {
 
@@ -15,7 +16,7 @@ module.exports = {
     kovan: {
       provider: function() {
         return new HDWalletProvider(
-          //Private key
+          privateKeys.split(',') //Array of account private keys
           //Url to ETH node
         )
       }
