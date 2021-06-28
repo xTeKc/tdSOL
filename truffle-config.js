@@ -1,3 +1,5 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 require('babel-register');
 require('babel-polyfill');
 require("dotenv").config();
@@ -10,6 +12,15 @@ module.exports = {
       port: 7545,
       network_id: "*" //match any network id
     },
+    kovan: {
+      provider: function() {
+        return new HDWalletProvider(
+          //Private key
+          //Url to ETH node
+        )
+      }
+    }
+
   },
   contracts_directory: './src/contracts/',
   contracts_build_directory: './src/abis/',
