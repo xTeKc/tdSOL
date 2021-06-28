@@ -4,11 +4,14 @@ import Web3 from 'web3'
 
 class App extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
 
   }
 
-  
+  async loadBlockchainData() {
+    const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545')
+    console.log('web3', web3)
+  }
 
   render() {
     return (
