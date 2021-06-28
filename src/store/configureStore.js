@@ -1,4 +1,5 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createLogger } from 'redux-logger';
 import rootReducer from "./reducers";
 
 export default function configureStore(preloadedState) {
@@ -7,3 +8,4 @@ export default function configureStore(preloadedState) {
         preloadedState
     )
 }
+
