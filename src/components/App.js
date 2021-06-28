@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Web3 from 'web3'
+import { connect } from 'react-redux'
 import Token from '../abis/Token.json'
 
 class App extends Component {
