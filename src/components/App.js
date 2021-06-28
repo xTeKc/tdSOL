@@ -27,6 +27,13 @@ class App extends Component {
       return
   }
 
+  const exchange = await loadExchange(web3, networkId, dispatch)
+  if(!exchange) {
+    window.alert('Exchange smart contract not detected on the current network. Please select another network with Metamask.')
+    return
+  }
+}
+
   render() {
     return (
       <div>
