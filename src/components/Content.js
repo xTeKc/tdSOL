@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { exchangeSelector } from '../store/selectors'
 import { loadAllOrders } from '../store/interactions'
+import Trades from './Trades'
 
 class Content extends Component {
   componentWillMount() {
