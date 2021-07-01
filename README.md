@@ -5,7 +5,7 @@
 ---
 ![DGLD-DEX](https://user-images.githubusercontent.com/81730792/123808908-266d9100-d8bf-11eb-9c70-6c3c9eca6f84.png)
 
-######To get started:
+###### To get started:
 First, make sure you have the tools to setup the project.
 
 
