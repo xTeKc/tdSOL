@@ -21,12 +21,12 @@ sudo apt install nodejs npm
 
 __Truffle__
 ```
-
+npm install -g truffle
 ```
 
-__Ganache or Ganache-Cli__
+__Ganache-Cli__
 ```
-
+npm install -g ganache-cli
 ```
 
 Clone the repo & install the dependencies.
