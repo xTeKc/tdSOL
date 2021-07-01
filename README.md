@@ -6,6 +6,8 @@
 
 __To get started__:
 
+Clone the repo. Then..
+
 ```
 npm install
 ```
