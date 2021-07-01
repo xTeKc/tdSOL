@@ -5,11 +5,11 @@
 ---
 ![DGLD-DEX](https://user-images.githubusercontent.com/81730792/123808908-266d9100-d8bf-11eb-9c70-6c3c9eca6f84.png)
 
-__To get started__:
+######To get started:
 First, make sure you have the tools to setup the project.
 
 
-__NodeJS__:
+__NodeJS, Truffle & Ganache-Cli__
 
 _Arch Linux - NodeJS & Npm_
 
@@ -18,21 +18,18 @@ _Arch Linux - NodeJS & Npm_
 _Debian - NodeJS & Npm_
 
 + `sudo apt install nodejs npm`
----
-__Truffle__:
 
+_Truffle_
 + `npm install -g truffle`
----
-__Ganache-Cli__:
 
+_Ganache-Cli_
 + `npm install -g ganache-cli`
 ---
 __Clone the repo & install the dependencies__:
 
 + `npm install`
----
 
-__Make sure you have ganache-cli open__
+__Make sure you have ganache-cli open in a seperate terminal tab__
 
 ---
 
