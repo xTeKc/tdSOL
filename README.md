@@ -34,15 +34,17 @@ Clone the repo & install the dependencies.
 ```
 npm install
 ```
+---
 __Migrate the Contracts__:
 ```
 truffle migrate --reset
 ```
+---
 __Seed the Exchange__
 ```
 truffle exec scripts/seed-exchange.js
 ```
-
+---
 __To display the UI__:
 Open a new terminal tab & start the React App.
 
