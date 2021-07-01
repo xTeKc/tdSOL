@@ -35,6 +35,11 @@ __Clone the repo & install the dependencies__:
 npm install
 ```
 ---
+
+__Make sure you have ganache-cli open__
+
+---
+
 __Migrate the Contracts__:
 ```
 truffle migrate --reset
@@ -45,6 +50,10 @@ __Seed the Exchange__:
 truffle exec scripts/seed-exchange.js
 ```
 ---
+__Make sure you are logged into your developer MetaMask__
+
+---
+
 __To display the UI__:
 Open a new terminal tab & start the React App.
 
