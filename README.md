@@ -8,7 +8,7 @@ __To get started__:
 First, make sure you have the tools to setup the project.
 
 
-__NodeJS__
+__NodeJS__:
 
 _Arch Linux - NodeJS & Npm_
 ```
@@ -19,17 +19,17 @@ _Debian - NodeJS & Npm_
 sudo apt install nodejs npm
 ```
 ---
-__Truffle__
+__Truffle__:
 ```
 npm install -g truffle
 ```
 ---
-__Ganache-Cli__
+__Ganache-Cli__:
 ```
 npm install -g ganache-cli
 ```
 ---
-Clone the repo & install the dependencies.
+__Clone the repo & install the dependencies__:
 
 ```
 npm install
@@ -40,7 +40,7 @@ __Migrate the Contracts__:
 truffle migrate --reset
 ```
 ---
-__Seed the Exchange__
+__Seed the Exchange__:
 ```
 truffle exec scripts/seed-exchange.js
 ```
