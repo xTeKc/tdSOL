@@ -11,19 +11,19 @@ First, make sure you have the tools to setup the project.
 
 __NodeJS, Truffle & Ganache-Cli__
 
-_Arch Linux - NodeJS & Npm_
++ _Arch Linux - NodeJS & Npm_
 
-+ `sudo pacman -S nodejs npm`
+    + `sudo pacman -S nodejs npm`
 
-_Debian - NodeJS & Npm_
++ _Debian - NodeJS & Npm_
 
-+ `sudo apt install nodejs npm`
+    + `sudo apt install nodejs npm`
 
-_Truffle_
-+ `npm install -g truffle`
++ _Truffle_
+    + `npm install -g truffle`
 
-_Ganache-Cli_
-+ `npm install -g ganache-cli`
++ _Ganache-Cli_
+    + `npm install -g ganache-cli`
 ---
 __Clone the repo & install the dependencies__:
 
