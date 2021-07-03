@@ -25,28 +25,4 @@ __NodeJS, Truffle & Ganache-Cli__
 + _Ganache-Cli_
     + `npm install -g ganache-cli`
 ---
-__Clone the repo & install the dependencies__:
-
-+ `npm install`
-
-__Make sure you have ganache-cli open in a seperate terminal tab__
-
----
-
-__Migrate the Contracts__:
-
-+ `truffle migrate --reset`
-
----
-__Seed the Exchange__:
-
-+ `truffle exec scripts/seed-exchange.js`
----
-__Make sure you are logged into your developer MetaMask__
-
----
-
-__To display the UI__:
-Open a new terminal tab & start the React App.
-
-+ `npm run start`
+Once you get the tools installed to run the project, make sure to Clone the repo & install the dependencies that are in the package.json file by typing `npm install` into the terminal. Make sure you have ganache-cli open in a seperate terminal tab, so that it doesn't interfere with your main terminal. To compile and migrate the contracts, type `truffle migrate --reset` into the terminal. After you have compiled the contracts, you can then seed the exchange by typing `truffle exec scripts/seed-exchange.js` this will execute the created scripts to display the data onto the user interface. Make sure you are logged into your developer MetaMask, then to display the user interface, open a new terminal tab & start the React App by typing `npm run start` this should prompt for you to login to your MetaMask and show all the data for the Token and the Exchange.
