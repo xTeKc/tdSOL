@@ -5,6 +5,8 @@
 ---
 ![DGLD-DEX](https://user-images.githubusercontent.com/81730792/123808908-266d9100-d8bf-11eb-9c70-6c3c9eca6f84.png)
 
+This project is a display of a Token contract and an Exchange contract combined to have the Token hard coded into the Exchange and add the ability to buy, sell, and interact with Ethereum.
+
 ###### To get started:
 First, make sure you have the tools to setup the project.
 
